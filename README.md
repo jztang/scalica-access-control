@@ -11,7 +11,9 @@ Large Scale Team 12
 
 Install required packages
 
-`$ sudo apt-get update; sudo apt-get install mysql-server libmysqlclient-dev python-dev python-virtualenv`
+`$ sudo apt-get update`
+
+`sudo apt-get install mysql-server libmysqlclient-dev python-dev python-virtualenv`
 (Set a mysql root password)
 
 `$ ./first_install.sh`
