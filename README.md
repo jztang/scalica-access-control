@@ -84,8 +84,10 @@ If you want to reset the website and wipe your data, from the project root direc
 
 `$ sudo ./install_db.sh`
 
-`$ cd ../web/scalica`
+`$ cd ..`
 
-`$ python manage.py makemigrations micro`
+`$ source ./env/bin/activate`
+
+`$ cd web/scalica`
 
 `$ python manage.py migrate`
