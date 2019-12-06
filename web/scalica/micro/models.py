@@ -6,6 +6,8 @@ from django.forms import ModelForm, TextInput
 
 class Post(models.Model):
   user = models.ForeignKey(settings.AUTH_USER_MODEL)
+  visibility = models.IntegerField(default=1)
+  group_ID = models.IntegerField(default=0)
   text = models.CharField(max_length=256, default="")
   pub_date = models.DateTimeField('date_posted')
   def __str__(self):
