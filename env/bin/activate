@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/jason/Documents/depot/env"
+VIRTUAL_ENV="/home/jason/Documents/scalica-access-control/env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

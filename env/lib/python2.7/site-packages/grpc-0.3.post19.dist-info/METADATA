@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: grpc
+Version: 0.3-19
+Summary: Pure Python Gevent RPC & golang RPC
+Requires-Dist: msgpack-python
+
+Home-page: https://bitbucket.org/seewind/grpc
+Author: seewind
+Author-email: seewindcn@gmail.com
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN
