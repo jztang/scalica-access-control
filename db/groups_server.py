@@ -1,7 +1,8 @@
 import redis
 import grpc
-import groups_pb2.py
-import groups_pb2_grpc.py
+import groups_pb2
+import groups_pb2_grpc
+from concurrent import futures
 
 
 redisClient_0=redis.StrictRedis(host='localhost', port=6379, db=0) #open revis server 0
@@ -65,7 +66,7 @@ class GroupManager(groups_pb2_grpc.Groups_ManagerServicer): #manager system
 
 def serve(): #serve def to execute and wait for termination
 	server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-	debate_pb2_grpc.add_GroupManagerServicer_to_server(GroupManager(), server)
+	groups_pb2_grpc.add_Groups_ManagerServicer_to_server(GroupManager(), server)
 	server.add_insecure_port('[::]:50051')
 	server.start()
 	server.wait_for_termination() #keyboard interrupt
