@@ -47,6 +47,8 @@ a:visited {
 
 body {
   /* background: white url("images/background.gif") no-repeat right bottom; */
+
+  background-color: beige;
 }
 
 li a {
@@ -85,8 +87,4 @@ div#content li {
   font-size: 8px;
 }
 
-body{
 
-  background-color: beige;
-
-}
