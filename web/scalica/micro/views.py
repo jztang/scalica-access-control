@@ -50,7 +50,7 @@ def stream(request, user_id):
   # Filter group posts
   group_posts = post_list.filter(visibility=3)
   for post in group_posts:
-    if stub.Contains(groups_pb2.ContainsRequest(group_id=str(post.group_ID), user_id=str(request.user.id))).result != 1:
+    if request.user.id != int(user_id) and stub.Contains(groups_pb2.ContainsRequest(group_id=str(post.group_ID), user_id=str(request.user.id))).result != 1:
       post_list = post_list.exclude(id=post.id)
 
   # Filter private posts

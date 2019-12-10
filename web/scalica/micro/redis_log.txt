@@ -101,3 +101,11 @@ ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
 13:53:24,2 root INFO Checking if 3 in 152 in client 0
 13:53:41,843 root INFO Checking if 4 in 152 in client 0
 13:53:43,769 root INFO Checking if 4 in 152 in client 0
+16:19:26,761 root INFO Checking if 1 in 152 in client 0
+16:19:30,167 root INFO Checking if 1 in 152 in client 0
+16:20:36,476 root INFO Checking if 1 in 152 in client 0
+16:21:32,159 root INFO Checking if 2 in 152 in client 0
+16:21:42,926 root INFO Checking if 3 in 152 in client 0
+16:21:45,247 root INFO Checking if 3 in 152 in client 0
+16:21:54,972 root INFO Checking if 4 in 152 in client 0
+16:21:56,373 root INFO Checking if 4 in 152 in client 0
