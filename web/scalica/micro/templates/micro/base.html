@@ -8,29 +8,7 @@
 <body>
   <div id="header">
 
-      <nav>
-	        
-
-          <ul id = "mainNav">
-          <a href="/micro/">
-            <li class = "navItem">
-              Home
-            </li>
-          </a>
-
-          <a href="/micro/follow/">
-            <li class = "navItem">
-              Follow
-            </li>
-          </a>
-
-
-        </ul>
       
-</nav>
-
-
-
 
 
 
@@ -41,6 +19,28 @@
       <a href="{% url 'micro:login' %}">Log In</a>
     {% endif %}
     {% block header %}{% endblock header %}
+
+
+    <nav>
+	        
+
+        <ul id = "mainNav">
+        <a href="/micro/">
+          <li class = "navItem">
+            Home
+          </li>
+        </a>
+
+        <a href="/micro/follow/">
+          <li class = "navItem">
+            Follow
+          </li>
+        </a>
+
+
+      </ul>
+    
+    </nav>
   </div>
   <div id="sidebar">
     {% block sidebar %}{% endblock sidebar %}
