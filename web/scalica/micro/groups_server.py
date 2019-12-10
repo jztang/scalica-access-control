@@ -5,25 +5,27 @@ import groups_pb2_grpc
 from concurrent import futures
 import logging
 
-
+#make sure to have redis downloaded and to open them on 4 separate ports as below
 redisClient_0=redis.StrictRedis(host='localhost', port=6379, db=0) #open revis server 0
 redisClient_1=redis.StrictRedis(host='localhost', port=6380, db=1) #open revis server 1
 redisClient_2=redis.StrictRedis(host='localhost', port=6381, db=2) #open revis server 2
 redisClient_3=redis.StrictRedis(host='localhost', port=6382, db=3) #open revis server 3
 
 
-logger = logging.getLogger('redis_logger')
-formatter=logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-hdlr = logging.FileHandler('C:/Users/Liran/Desktop/Large Scale Web Applications/Final project/redis.log')
-hdlr.setFormatter(formatter)
-logger.addHandler(hdlr)
-logger.setLevel(logging.WARNING)
+#logging cofiguration to save what's happening
+logging.basicConfig(filename='redis_log.txt',
+                            filemode='a',
+                            format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                            datefmt='%H:%M:%S',
+                            level=logging.DEBUG)
 
+#rpcs to do a variety of functions
 class GroupManager(groups_pb2_grpc.Groups_ManagerServicer): #manager system
-	#all should return 1 if correct
+	#all should return 1 if correct other than allmembers
+	#sharded by group_id to prevent long latency with massive groups
 	def AddMember(self, request, context):
 		val=int(request.group_id)%4
-		logger.info('Added ' + str(request.user_id) + ' to ' + str(request.group_id) + ' in client ' + str(val))
+		logging.info('Added ' + str(request.user_id) + ' to ' + str(request.group_id) + ' in client ' + str(val))
 		if (val==0):
 			return groups_pb2.AddMemberReply(result=redisClient_0.sadd(request.group_id, request.user_id))
 		elif (val==1):
@@ -34,7 +36,7 @@ class GroupManager(groups_pb2_grpc.Groups_ManagerServicer): #manager system
 
 	def RemoveMember(self, request, context):
 		val=int(request.group_id)%4 
-		logger.info('Removed ' + str(request.user_id) + ' from '  + str(request.group_id) + ' in client ' + str(val))
+		logging.info('Removed ' + str(request.user_id) + ' from '  + str(request.group_id) + ' in client ' + str(val))
 		if (val==0):
 			return groups_pb2.RemoveMemberReply(result=redisClient_0.srem(request.group_id, request.user_id))
 		elif (val==1):
@@ -45,7 +47,7 @@ class GroupManager(groups_pb2_grpc.Groups_ManagerServicer): #manager system
 
 	def Contains(self, request, context):
 		val=int(request.group_id)%4 
-		logger.info('Checking if ' +  str(request.user_id) + ' in ' + str(request.group_id) + ' in client ' + str(val))
+		logging.info('Checking if ' +  str(request.user_id) + ' in ' + str(request.group_id) + ' in client ' + str(val))
 		if (val==0):
 			return groups_pb2.ContainsReply(result=redisClient_0.sismember(request.group_id, request.user_id))
 		elif (val==1):
@@ -56,7 +58,7 @@ class GroupManager(groups_pb2_grpc.Groups_ManagerServicer): #manager system
 
 	def AllMembers(self, request, context):
 		val=int(request.group_id)%4
-		logger.info('Returning all members of ' + str(request.group_id) + ' in client ' + str(val))
+		logging.info('Returning all members of ' + str(request.group_id) + ' in client ' + str(val))
 		if (val==0):
 			return groups_pb2.AllMembersReply(result=redisClient_0.smembers(request.group_id))
 		elif (val==1):
@@ -67,7 +69,7 @@ class GroupManager(groups_pb2_grpc.Groups_ManagerServicer): #manager system
 
 	def DeleteGroup(self, request, context):
 		val=int(request.group_id)%4 
-		logger.info('Deleting group' + str(request.group_id) + ' in client ' + str(val))
+		logging.info('Deleting group' + str(request.group_id) + ' in client ' + str(val))
 		if (val==0):
 			return groups_pb2.DeleteGroupReply(result=redisClient_0.delete(request.group_id))
 		elif (val==1):
