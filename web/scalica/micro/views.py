@@ -6,7 +6,13 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils import timezone
 from .models import Following, Post, FollowingForm, PostForm, MyUserCreationForm
+import grpc
+import groups_pb2
+import groups_pb2_grpc
 
+# Group manager RPC
+channel = grpc.insecure_channel("localhost:50051")
+stub = groups_pb2_grpc.Groups_ManagerStub(channel)
 
 # Anonymous views
 #################
@@ -30,6 +36,27 @@ def stream(request, user_id):
       form = FollowingForm
   user = User.objects.get(pk=user_id)
   post_list = Post.objects.filter(user_id=user_id).order_by('-pub_date')
+
+  # FILTER POSTS DEPENDING ON VISIBILITY SETTINGS
+
+  # Filter follower-only posts
+  if request.user.id != int(user_id):
+    try:
+      f = Following.objects.get(follower_id=request.user.id,
+                                followee_id=user_id)
+    except Following.DoesNotExist:
+      post_list = post_list.exclude(visibility=2)
+
+  # Filter group posts
+  group_posts = post_list.filter(visibility=3)
+  for post in group_posts:
+    if stub.Contains(groups_pb2.ContainsRequest(group_id=str(post.group_ID), user_id=str(request.user.id))).result != 1:
+      post_list = post_list.exclude(id=post.id)
+
+  # Filter private posts
+  if request.user.id != int(user_id):
+    post_list = post_list.exclude(visibility=4)
+
   paginator = Paginator(post_list, 10)
   page = request.GET.get('page')
   try:
@@ -72,10 +99,31 @@ def home(request):
     my_post = Post.objects.filter(user=request.user).order_by('-pub_date')[0]
   except IndexError:
     my_post = None
-  follows = [o.followee_id for o in Following.objects.filter(
-    follower_id=request.user.id)]
-  post_list = Post.objects.filter(
-      user_id__in=follows).order_by('-pub_date')[0:10]
+
+  # Exclude the user's posts
+  post_list = Post.objects.exclude(user_id=request.user.id)
+
+  # Filter posts to people the user follows
+  for post in post_list:
+    try:
+      f = Following.objects.get(follower_id=request.user.id,
+                                followee_id=post.user.id)
+    except Following.DoesNotExist:
+      post_list = post_list.exclude(id=post.id)
+
+  # FILTER POSTS DEPENDING ON VISIBILITY SETTINGS
+
+  # Filter group posts
+  group_posts = post_list.filter(visibility=3)
+  for post in group_posts:
+    if stub.Contains(groups_pb2.ContainsRequest(group_id=str(post.group_ID), user_id=str(request.user.id))).result != 1:
+      post_list = post_list.exclude(id=post.id)
+
+  # Filter private posts
+  post_list = post_list.exclude(visibility=4)
+
+  post_list.order_by('-pub_date')[0:10]
+
   context = {
     'post_list': post_list,
     'my_post' : my_post,

@@ -1,0 +1,103 @@
+22:59:53,764 root INFO Returning all members of 152 in client 0
+22:59:53,765 root INFO Checking if Liran in 152 in client 0
+23:01:22,689 root INFO Returning all members of 152 in client 0
+23:01:22,691 root INFO Checking if Liran in 152 in client 0
+23:04:55,506 root INFO Added Liran to 152 in client 0
+23:04:55,508 root INFO Checking if Liran in 152 in client 0
+23:05:04,519 root INFO Added Liran to 152 in client 0
+23:05:04,520 root INFO Checking if Liran in 152 in client 0
+23:05:05,551 root INFO Added Liran to 152 in client 0
+23:05:05,552 root INFO Checking if Liran in 152 in client 0
+23:05:06,31 root INFO Added Liran to 152 in client 0
+23:05:06,33 root INFO Checking if Liran in 152 in client 0
+23:05:06,399 root INFO Added Liran to 152 in client 0
+23:05:06,401 root INFO Checking if Liran in 152 in client 0
+23:05:06,644 root INFO Added Liran to 152 in client 0
+23:05:06,645 root INFO Checking if Liran in 152 in client 0
+23:05:06,913 root INFO Added Liran to 152 in client 0
+23:05:06,915 root INFO Checking if Liran in 152 in client 0
+23:05:07,181 root INFO Added Liran to 152 in client 0
+23:05:07,183 root INFO Checking if Liran in 152 in client 0
+23:05:07,442 root INFO Added Liran to 152 in client 0
+23:05:07,443 root INFO Checking if Liran in 152 in client 0
+23:05:07,725 root INFO Added Liran to 152 in client 0
+23:05:07,727 root INFO Checking if Liran in 152 in client 0
+23:05:07,989 root INFO Added Liran to 152 in client 0
+23:05:07,990 root INFO Checking if Liran in 152 in client 0
+23:05:08,225 root INFO Added Liran to 152 in client 0
+23:05:08,226 root INFO Checking if Liran in 152 in client 0
+23:05:08,452 root INFO Added Liran to 152 in client 0
+23:05:08,453 root INFO Checking if Liran in 152 in client 0
+23:24:46,35 root INFO Checking if 2 in 0 in client 0
+23:24:54,357 root INFO Checking if 2 in 0 in client 0
+23:24:55,887 root INFO Checking if 2 in 0 in client 0
+23:41:44,480 root INFO Checking if Liran in 152 in client 0
+23:41:51,549 root INFO Checking if Liran in 152 in client 0
+23:42:31,826 root INFO Returning all members of 152 in client 0
+23:42:31,827 root INFO Checking if Liran in 152 in client 0
+23:42:48,783 root INFO Added Jason to 152 in client 0
+23:42:48,784 root INFO Checking if Liran in 152 in client 0
+23:42:51,878 root INFO Added Jason to 152 in client 0
+23:42:51,879 root INFO Checking if Liran in 152 in client 0
+23:43:11,434 root INFO Added Liran to 152 in client 0
+23:43:11,435 root INFO Checking if Liran in 152 in client 0
+23:43:18,105 root INFO Added Liran to 152 in client 0
+23:43:18,106 root INFO Checking if Liran in 152 in client 0
+23:43:23,361 root INFO Added Liran to 152 in client 0
+23:43:23,363 root INFO Checking if Liran in 152 in client 0
+23:43:40,461 root INFO Added Liran to 152 in client 0
+23:43:40,463 root INFO Checking if Liran in 152 in client 0
+23:53:15,139 root INFO Checking if 2 in 0 in client 0
+23:53:19,716 root INFO Checking if 2 in 0 in client 0
+12:55:18,398 root INFO Checking if 2 in 0 in client 0
+12:59:21,178 root INFO Checking if 2 in 152 in client 0
+13:00:18,598 root INFO Added 2 to 152 in client 0
+13:00:47,542 root INFO Checking if 2 in 152 in client 0
+13:11:44,178 root INFO Checking if 2 in 152 in client 0
+13:14:23,730 root INFO Checking if 2 in 152 in client 0
+13:15:11,477 root INFO Checking if 2 in 152 in client 0
+13:16:08,326 root INFO Checking if 2 in 152 in client 0
+13:18:13,378 root INFO Removed 2 from 152 in client 0
+13:18:15,36 root INFO Checking if 2 in 152 in client 0
+13:18:59,469 root INFO Added 2 to 152 in client 0
+13:19:27,60 root INFO Removed 2 from 152 in client 0
+13:19:29,856 root INFO Checking if 2 in 152 in client 0
+13:20:37,352 root INFO Checking if 2 in 0 in client 0
+13:20:37,354 root INFO Checking if 2 in 0 in client 0
+13:20:37,355 root INFO Checking if 2 in 152 in client 0
+13:20:37,357 root INFO Checking if 2 in 0 in client 0
+13:20:38,711 root INFO Checking if 2 in 0 in client 0
+13:20:38,712 root INFO Checking if 2 in 0 in client 0
+13:20:38,714 root INFO Checking if 2 in 152 in client 0
+13:20:38,715 root INFO Checking if 2 in 0 in client 0
+13:20:39,85 root INFO Checking if 2 in 0 in client 0
+13:20:39,88 root INFO Checking if 2 in 0 in client 0
+13:20:39,90 root INFO Checking if 2 in 152 in client 0
+13:20:39,93 root INFO Checking if 2 in 0 in client 0
+13:21:03,239 root INFO Checking if 2 in 152 in client 0
+13:21:26,191 root INFO Added 2 to 152 in client 0
+13:21:28,101 root INFO Checking if 2 in 152 in client 0
+13:22:16,131 root INFO Checking if 2 in 152 in client 0
+13:50:18,805 root INFO Checking if None in 152 in client 0
+13:50:18,805 grpc._server ERROR Exception calling application: Error 111 connecting to localhost:6379. Connection refused.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/grpc/_server.py", line 435, in _call_behavior
+    response_or_iterator = behavior(argument, context)
+  File "groups_server.py", line 52, in Contains
+    return groups_pb2.ContainsReply(result=redisClient_0.sismember(request.group_id, request.user_id))
+  File "/home/jason/.local/lib/python2.7/site-packages/redis/client.py", line 1980, in sismember
+    return self.execute_command('SISMEMBER', name, value)
+  File "/home/jason/.local/lib/python2.7/site-packages/redis/client.py", line 836, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/home/jason/.local/lib/python2.7/site-packages/redis/connection.py", line 1073, in get_connection
+    connection.connect()
+  File "/home/jason/.local/lib/python2.7/site-packages/redis/connection.py", line 544, in connect
+    raise ConnectionError(self._error_message(e))
+ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+13:51:21,207 root INFO Checking if None in 152 in client 0
+13:52:39,915 root INFO Added 4 to 152 in client 0
+13:53:06,48 root INFO Checking if 2 in 152 in client 0
+13:53:16,553 root INFO Checking if 3 in 152 in client 0
+13:53:24,2 root INFO Checking if 3 in 152 in client 0
+13:53:41,843 root INFO Checking if 4 in 152 in client 0
+13:53:43,769 root INFO Checking if 4 in 152 in client 0
