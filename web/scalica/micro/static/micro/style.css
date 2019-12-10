@@ -5,10 +5,39 @@
   padding:5px;
 }
 
-nav{
+nav #mainNav{
+	list-style: none;
+	padding: 10px;
+	margin: 0px;
 
-  color:white;
-  text-align: left;
+
+
+	display: flex;
+
+	text-decoration: none;
+	border: solid 0px black;
+
+}
+
+nav #mainNav a{
+
+	flex-grow: 1;
+	text-decoration: none;
+
+}
+
+nav #mainNav li{
+
+	border: solid 1px black;
+	text-align: center;
+	flex-grow: 1;
+	font-size: 15pt;
+	
+	text-decoration: none;
+	background-color: grey;
+	color: white;
+
+	
 
 }
 
