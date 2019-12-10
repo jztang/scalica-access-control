@@ -7,7 +7,7 @@
 
 nav #mainNav{
 	list-style: none;
-	padding: 5px;
+	padding:10px;
 	margin: 0px;
 	display: flex;
 	text-decoration: none;
@@ -18,7 +18,7 @@ nav #mainNav{
 nav #mainNav a{
 	
   text-decoration: none;
-  padding: 15px;
+  padding-right: 15px;
 
 }
 
