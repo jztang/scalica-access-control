@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\rgroupDB.proto\"4\n\x0f\x61\x64\x64GroupRequest\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\x11\n\tgroupName\x18\x02 \x01(\t\"7\n\x12\x64\x65leteGroupRequest\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\x11\n\tgroupName\x18\x02 \x01(\t\" \n\raddGroupReply\x12\x0f\n\x07success\x18\x01 \x01(\x08\"#\n\x10\x64\x65leteGroupReply\x12\x0f\n\x07success\x18\x01 \x01(\x08\"4\n\x0fgetGroupRequest\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\x11\n\tgroupName\x18\x02 \x01(\t\" \n\rgetGroupReply\x12\x0f\n\x07groupId\x18\x01 \x01(\x05\"\'\n\x10removeAllRequest\x12\x13\n\x0bplaceHolder\x18\x01 \x01(\x08\"!\n\x0eremoveAllReply\x12\x0f\n\x07success\x18\x01 \x01(\x08\x32\xd8\x01\n\x08\x64\x61tabase\x12.\n\x08\x61\x64\x64Group\x12\x10.addGroupRequest\x1a\x0e.addGroupReply\"\x00\x12\x37\n\x0b\x64\x65leteGroup\x12\x13.deleteGroupRequest\x1a\x11.deleteGroupReply\"\x00\x12\x30\n\ngetGroupId\x12\x10.getGroupRequest\x1a\x0e.getGroupReply\"\x00\x12\x31\n\tremoveAll\x12\x11.removeAllRequest\x1a\x0f.removeAllReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\rgroupDB.proto\"4\n\x0f\x61\x64\x64GroupRequest\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\x11\n\tgroupName\x18\x02 \x01(\t\"7\n\x12\x64\x65leteGroupRequest\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\x11\n\tgroupName\x18\x02 \x01(\t\" \n\raddGroupReply\x12\x0f\n\x07success\x18\x01 \x01(\x08\"#\n\x10\x64\x65leteGroupReply\x12\x0f\n\x07success\x18\x01 \x01(\x08\"4\n\x0fgetGroupRequest\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\x11\n\tgroupName\x18\x02 \x01(\t\" \n\rgetGroupReply\x12\x0f\n\x07groupId\x18\x01 \x01(\x05\"\'\n\x10removeAllRequest\x12\x13\n\x0bplaceHolder\x18\x01 \x01(\x08\"!\n\x0eremoveAllReply\x12\x0f\n\x07success\x18\x01 \x01(\x08\"&\n\x14getGroupNamesRequest\x12\x0e\n\x06userId\x18\x01 \x01(\x05\"(\n\x12getGroupNamesReply\x12\x12\n\ngroupNames\x18\x01 \x01(\t2\x97\x02\n\x08\x64\x61tabase\x12.\n\x08\x61\x64\x64Group\x12\x10.addGroupRequest\x1a\x0e.addGroupReply\"\x00\x12\x37\n\x0b\x64\x65leteGroup\x12\x13.deleteGroupRequest\x1a\x11.deleteGroupReply\"\x00\x12\x30\n\ngetGroupId\x12\x10.getGroupRequest\x1a\x0e.getGroupReply\"\x00\x12\x31\n\tremoveAll\x12\x11.removeAllRequest\x1a\x0f.removeAllReply\"\x00\x12=\n\rgetGroupNames\x12\x15.getGroupNamesRequest\x1a\x13.getGroupNamesReply\"\x00\x62\x06proto3')
 )
 
 
@@ -294,6 +294,68 @@ _REMOVEALLREPLY = _descriptor.Descriptor(
   serialized_end=361,
 )
 
+
+_GETGROUPNAMESREQUEST = _descriptor.Descriptor(
+  name='getGroupNamesRequest',
+  full_name='getGroupNamesRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='userId', full_name='getGroupNamesRequest.userId', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=363,
+  serialized_end=401,
+)
+
+
+_GETGROUPNAMESREPLY = _descriptor.Descriptor(
+  name='getGroupNamesReply',
+  full_name='getGroupNamesReply',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='groupNames', full_name='getGroupNamesReply.groupNames', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=403,
+  serialized_end=443,
+)
+
 DESCRIPTOR.message_types_by_name['addGroupRequest'] = _ADDGROUPREQUEST
 DESCRIPTOR.message_types_by_name['deleteGroupRequest'] = _DELETEGROUPREQUEST
 DESCRIPTOR.message_types_by_name['addGroupReply'] = _ADDGROUPREPLY
@@ -302,6 +364,8 @@ DESCRIPTOR.message_types_by_name['getGroupRequest'] = _GETGROUPREQUEST
 DESCRIPTOR.message_types_by_name['getGroupReply'] = _GETGROUPREPLY
 DESCRIPTOR.message_types_by_name['removeAllRequest'] = _REMOVEALLREQUEST
 DESCRIPTOR.message_types_by_name['removeAllReply'] = _REMOVEALLREPLY
+DESCRIPTOR.message_types_by_name['getGroupNamesRequest'] = _GETGROUPNAMESREQUEST
+DESCRIPTOR.message_types_by_name['getGroupNamesReply'] = _GETGROUPNAMESREPLY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 addGroupRequest = _reflection.GeneratedProtocolMessageType('addGroupRequest', (_message.Message,), {
@@ -360,6 +424,20 @@ removeAllReply = _reflection.GeneratedProtocolMessageType('removeAllReply', (_me
   })
 _sym_db.RegisterMessage(removeAllReply)
 
+getGroupNamesRequest = _reflection.GeneratedProtocolMessageType('getGroupNamesRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETGROUPNAMESREQUEST,
+  '__module__' : 'groupDB_pb2'
+  # @@protoc_insertion_point(class_scope:getGroupNamesRequest)
+  })
+_sym_db.RegisterMessage(getGroupNamesRequest)
+
+getGroupNamesReply = _reflection.GeneratedProtocolMessageType('getGroupNamesReply', (_message.Message,), {
+  'DESCRIPTOR' : _GETGROUPNAMESREPLY,
+  '__module__' : 'groupDB_pb2'
+  # @@protoc_insertion_point(class_scope:getGroupNamesReply)
+  })
+_sym_db.RegisterMessage(getGroupNamesReply)
+
 
 
 _DATABASE = _descriptor.ServiceDescriptor(
@@ -368,8 +446,8 @@ _DATABASE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=364,
-  serialized_end=580,
+  serialized_start=446,
+  serialized_end=725,
   methods=[
   _descriptor.MethodDescriptor(
     name='addGroup',
@@ -405,6 +483,15 @@ _DATABASE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_REMOVEALLREQUEST,
     output_type=_REMOVEALLREPLY,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='getGroupNames',
+    full_name='database.getGroupNames',
+    index=4,
+    containing_service=None,
+    input_type=_GETGROUPNAMESREQUEST,
+    output_type=_GETGROUPNAMESREPLY,
     serialized_options=None,
   ),
 ])

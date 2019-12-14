@@ -34,6 +34,11 @@ class databaseStub(object):
         request_serializer=groupDB__pb2.removeAllRequest.SerializeToString,
         response_deserializer=groupDB__pb2.removeAllReply.FromString,
         )
+    self.getGroupNames = channel.unary_unary(
+        '/database/getGroupNames',
+        request_serializer=groupDB__pb2.getGroupNamesRequest.SerializeToString,
+        response_deserializer=groupDB__pb2.getGroupNamesReply.FromString,
+        )
 
 
 class databaseServicer(object):
@@ -68,6 +73,13 @@ class databaseServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def getGroupNames(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_databaseServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -90,6 +102,11 @@ def add_databaseServicer_to_server(servicer, server):
           servicer.removeAll,
           request_deserializer=groupDB__pb2.removeAllRequest.FromString,
           response_serializer=groupDB__pb2.removeAllReply.SerializeToString,
+      ),
+      'getGroupNames': grpc.unary_unary_rpc_method_handler(
+          servicer.getGroupNames,
+          request_deserializer=groupDB__pb2.getGroupNamesRequest.FromString,
+          response_serializer=groupDB__pb2.getGroupNamesReply.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

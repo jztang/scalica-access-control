@@ -14,8 +14,8 @@ from concurrent import futures
 
 import groupDB_pb2
 import groupDB_pb2_grpc
-import groups_pb2
-import groups_pb2_grpc
+#import groups_pb2
+#import groups_pb2_grpc
 
 
 class database(groupDB_pb2_grpc.databaseServicer):
@@ -56,9 +56,11 @@ class database(groupDB_pb2_grpc.databaseServicer):
 			if i.groupName == currentGroupName:
 				
 				#RPC to liran
+				'''
 				with grpc.insecure_channel('localhost:50051') as channel:
 					stub =  groups_pb2_grpc.databaseStub(channel)
 					stub.DeleteGroup(groups_pb2.DeleteGroupRequest(group_id = str(i.id)))
+				'''
 
 				i.delete()
 				return groupDB_pb2.deleteGroupReply(success = True)
@@ -88,6 +90,15 @@ class database(groupDB_pb2_grpc.databaseServicer):
 		group.objects.all().delete()
 		return groupDB_pb2.removeAllReply(success = True)
 
+	def getGroupNames(self, request, context):
+		currentUserId = request.userId
+		currentUser = user.objects.get(userNumber = currentUserId)
+		filterSet = group.objects.filter(user=currentUser)
+		listOfGroupNames = ""
+		for i in filterSet:
+			listOfGroupNames = listOfGroupNames + str(i.groupName) + ","
+		listOfGroupNames = listOfGroupNames[0: len(listOfGroupNames) - 1]
+		return groupDB_pb2.getGroupNamesReply(groupNames = listOfGroupNames)
 
 groupIdCounter = 0
 

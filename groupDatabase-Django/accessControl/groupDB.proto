@@ -6,6 +6,7 @@ service database{
 	rpc deleteGroup (deleteGroupRequest) returns (deleteGroupReply) {}
 	rpc getGroupId (getGroupRequest) returns (getGroupReply) {}
 	rpc removeAll (removeAllRequest) returns (removeAllReply) {}
+	rpc getGroupNames (getGroupNamesRequest) returns (getGroupNamesReply) {}
 }
 
 message addGroupRequest{
@@ -45,6 +46,14 @@ message removeAllRequest{
 message removeAllReply{
 	bool success = 1;
 
+}
+
+message getGroupNamesRequest{
+	int32 userId = 1;
+}
+
+message getGroupNamesReply{
+	string groupNames = 1;
 }
 
 
