@@ -6,6 +6,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^home/$', views.home, name='home'),
+    url(r'^settings/$', views.settings, name='settings'),
     url(r'^stream/(?P<user_id>[0-9]+)/$', views.stream, name='stream'),
     url(r'^post/$', views.post, name='post'),
     url(r'^follow/$', views.follow, name='follow'),
