@@ -11,7 +11,7 @@ import groupDB_pb2_grpc
 
 if __name__ == '__main__':
   logging.basicConfig()
-  with grpc.insecure_channel('localhost:50051') as channel:
+  with grpc.insecure_channel('localhost:50052') as channel:
     stub = groupDB_pb2_grpc.databaseStub(channel)
     stub.addGroup(groupDB_pb2.addGroupRequest(userId = 1, groupName = "frank"))
     stub.addGroup(groupDB_pb2.addGroupRequest(userId = 1, groupName = "groupTwo"))
