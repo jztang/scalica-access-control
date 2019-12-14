@@ -1,0 +1,50 @@
+
+syntax = "proto3";
+
+service database{
+	rpc addGroup (addGroupRequest) returns (addGroupReply) {}
+	rpc deleteGroup (deleteGroupRequest) returns (deleteGroupReply) {}
+	rpc getGroupId (getGroupRequest) returns (getGroupReply) {}
+	rpc removeAll (removeAllRequest) returns (removeAllReply) {}
+}
+
+message addGroupRequest{
+	int32 userId = 1;
+	string groupName = 2;
+}
+
+message deleteGroupRequest{
+	int32 userId = 1;
+	string groupName = 2;
+
+}
+
+message addGroupReply{
+	bool success = 1;
+
+}
+
+message deleteGroupReply{
+	bool success = 1;
+}
+
+message getGroupRequest{
+	int32 userId = 1;
+	string groupName = 2;
+}
+
+message getGroupReply{
+	int32 groupId = 1;
+
+}
+
+message removeAllRequest{
+	bool placeHolder = 1;
+}
+
+message removeAllReply{
+	bool success = 1;
+
+}
+
+
