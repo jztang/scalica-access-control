@@ -7,12 +7,7 @@
 </head> 
 <body>
 
-    <h1 style="text-align: center">Settings Page</h1>
   <div id="header">
-
-      
-
-
 
     {% if user.is_authenticated %}
       {{ user.username }}
@@ -22,10 +17,8 @@
     {% endif %}
     {% block header %}{% endblock header %}
 
-
     <nav>
-	        
-
+	    
         <ul id = "mainNav">
         <a href="/micro/">
           <li class = "navItem">
@@ -50,6 +43,51 @@
     
     </nav>
   </div>
+
+  <h1 style="text-align: center">Settings Page</h1>
+
+
+  <h3>Add a group</h3>
+  <p>Type in the name of the group you want to create</p>
+  <form action="" method="post">
+    <input type=text id=newgroup name=newgroup>
+    <input type="submit" value="Submit" />
+  </form>
+
+
+  <h3>Delete a group</h3>
+  <p>Type in the name of the group you want to delete</p>
+  <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+    <input type="submit" value="Submit" />
+  </form>
+
+  <h3>Add user to a group</h3>
+  <p>Select the user you want to add to the selected group</p>
+  <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        {% csrf_token %}
+        {{ form }}
+    <input type="submit" value="Submit" />
+  </form>
+
+  <h3>Delete a user from a group</h3>
+  <p>Select the user you remove from the selected group</p>
+  <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        {% csrf_token %}
+        {{ form }}
+    <input type="submit" value="Submit" />
+  </form>
+
+
+  
+
+
+
   <div id="sidebar">
     {% block sidebar %}{% endblock sidebar %}
   </div>
