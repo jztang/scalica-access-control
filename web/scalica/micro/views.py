@@ -185,11 +185,13 @@ def addGroup(request):
   with grpc.insecure_channel('localhost:50052') as channel2:
     stub = groupDB_pb2_grpc.databaseStub(channel2)
     stub.addGroup(groupDB_pb2.addGroupRequest(userId = request.user.id, groupName = request.POST.get('newgroup')))
+    groupID = getGroupID(request.POST.get('newgroup'), request.user.id)
     print(stub.getGroupNames(groupDB_pb2.getGroupNamesRequest(userId = request.user.id)))
+    print(groupID)
 
   with grpc.insecure_channel('localhost:50051') as channel:
     stub = groups_pb2_grpc.Groups_ManagerStub(channel)
-    members = stub.AddMember(groups_pb2.AddMemberRequest(group_id = str(groupID.groupId), user_id = request.user.id))
+    stub.AddMember(groups_pb2.AddMemberRequest(group_id = str(groupID.groupId), user_id = request.user.id))
   return render(request, 'micro/settings.html')
 
 
