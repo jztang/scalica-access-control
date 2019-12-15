@@ -12,9 +12,12 @@ urlpatterns = [
     url(r'^addGroup/$', views.addGroup, name='addGroup'),
     url(r'^follow/$', views.follow, name='follow'),
     url(r'^grouplist/$', views.getGroups, name='getGroups'),
+    url(r'^memberlist/$', views.getMembers, name='getMembers'),
+    #url(r'^grouplist2/$', views.getGroups, name='getGroups'),
     url(r'^register/$', views.register, name='register'),
     #url(r'^addToGroup/$', views.addMemberToGroup, name='addToGroup'),
     #url(r'^userslist/$', views.getAllUsers, name='getUsers'),
     url(r'^deleteGroup/$', views.deleteGroup, name='delete'),
+    #url(r'^deleteMember/$', views.deleteMember, name='deleteMember'),
     url('^', include('django.contrib.auth.urls'))
 ]
