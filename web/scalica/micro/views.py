@@ -17,8 +17,8 @@ import groupDB_pb2_grpc
 channel = grpc.insecure_channel("localhost:50051")
 stub = groups_pb2_grpc.Groups_ManagerStub(channel)
 
-channel2 = grpc.insecure_channel("localhost:50051")
-stub2 = groups_pb2_grpc.Groups_ManagerStub(channel)
+channel2 = grpc.insecure_channel("localhost:50052")
+stub2 = groupDB_pb2_grpc.databaseStub(channel)
 
 # Anonymous views
 #################
@@ -58,7 +58,9 @@ def stream(request, user_id):
   # Filter group posts
   group_posts = post_list.filter(visibility=3)
   for post in group_posts:
-    if request.user.id != int(user_id) and stub.Contains(groups_pb2.ContainsRequest(group_id=str(post.group_ID), user_id=str(request.user.id))).result != 1:
+    post_gid = stub2.getGroupId(groupDB_pb2.getGroupRequest(userId=post.user.id, groupName=post.group_name)).groupId
+
+    if request.user.id != int(user_id) and stub.Contains(groups_pb2.ContainsRequest(group_id=str(post_gid), user_id=str(request.user.id))).result != 1:
       post_list = post_list.exclude(id=post.id)
 
   # Filter private posts
@@ -124,7 +126,9 @@ def home(request):
   # Filter group posts
   group_posts = post_list.filter(visibility=3)
   for post in group_posts:
-    if stub.Contains(groups_pb2.ContainsRequest(group_id=str(post.group_ID), user_id=str(request.user.id))).result != 1:
+    post_gid = stub2.getGroupId(groupDB_pb2.getGroupRequest(userId=post.user.id, groupName=post.group_name)).groupId
+
+    if stub.Contains(groups_pb2.ContainsRequest(group_id=str(post_gid), user_id=str(request.user.id))).result != 1:
       post_list = post_list.exclude(id=post.id)
 
   # Filter private posts
