@@ -63,6 +63,7 @@
     <select name="groups">
       {% for entry in items %}
           <option value="{{ entry.id }}">{{ entry }}</option>
+          <input type="submit" value="Submit" id=submit>
       {% endfor %}
       </select>
   </form>
