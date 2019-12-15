@@ -12,6 +12,8 @@ import groups_pb2_grpc
 import groupDB_pb2
 import groupDB_pb2_grpc
 
+import sys
+
 
 import models
 
@@ -180,7 +182,7 @@ def settings(request):
 @login_required
 def addGroup(request):
   #here i wanna call your method here
-  with grpc.insecure_channel('localhost:50052') as channel:
+  with grpc.insecure_channel('localhost:50052') as channel2:
     stub = groupDB_pb2_grpc.databaseStub(channel)
     stub.addGroup(groupDB_pb2.addGroupRequest(userId = request.user.id, groupName = request.POST.get('newgroup')))
     print(stub.getGroupNames(groupDB_pb2.getGroupNamesRequest(userId = request.user.id)))
@@ -190,7 +192,7 @@ def addGroup(request):
 @login_required
 def getGroups(request):
   #here i wanna call your method here
-  with grpc.insecure_channel('localhost:50052') as channel:
+  with grpc.insecure_channel('localhost:50052') as channel2:
     stub = groupDB_pb2_grpc.databaseStub(channel)
     groups = stub.getGroupNames(groupDB_pb2.getGroupNamesRequest(userId = request.user.id))
     print(groups.groupNames)
@@ -202,7 +204,7 @@ def getGroups(request):
 @login_required
 def deleteGroup(request):
   #here i wanna call your method here
-  with grpc.insecure_channel('localhost:50052') as channel:
+  with grpc.insecure_channel('localhost:50052') as channel2:
     stub = groupDB_pb2_grpc.databaseStub(channel)
     stub.deleteGroup(groupDB_pb2.deleteGroupRequest(groupName = request.POST.get('groups')))
   return render(request, 'micro/settings.html')
