@@ -110,6 +110,8 @@
 
   <form action="/micro/deleteMember/" method="post">
     {% csrf_token %}
+    <p> Then type in the group name here </p>
+    <input type=text id=group name=group>
     <input type="submit" value="Delete" id=submit>
   </form>
 
