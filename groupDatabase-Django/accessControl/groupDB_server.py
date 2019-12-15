@@ -56,7 +56,7 @@ class database(groupDB_pb2_grpc.databaseServicer):
 
 		#lookup 
 		try:
-			currentUser = user(userNumber = currentUserId)
+			currentUser = user.objects.get(userNumber = currentUserId)
 			filterSet = group.objects.filter(user=currentUser)
 
 		except user.DoesNotExist:
