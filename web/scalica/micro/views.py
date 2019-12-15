@@ -256,5 +256,6 @@ def deleteMember(request):
     stub = groups_pb2_grpc.Groups_ManagerStub(channel)
     print("this is my member "+ str(request.POST.get('user')))
     stub.RemoveMember(groups_pb2.RemoveMemberRequest(group_id = str(groupID), user_id = str(request.POST.get('user'))))
+    print(request.user.id)
     
   return render(request, 'micro/settings.html')
