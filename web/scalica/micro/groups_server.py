@@ -59,6 +59,7 @@ class GroupManager(groups_pb2_grpc.Groups_ManagerServicer): #manager system
 	def AllMembers(self, request, context):
 		val=int(request.group_id)%4
 		logging.info('Returning all members of ' + str(request.group_id) + ' in client ' + str(val))
+		print ('Returning all members of ' + str(request.group_id) + ' in client ' + str(val))
 		if (val==0):
 			return groups_pb2.AllMembersReply(result=redisClient_0.smembers(request.group_id))
 		elif (val==1):
