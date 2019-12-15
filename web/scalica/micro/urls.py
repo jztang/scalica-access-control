@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^settings/$', views.settings, name='settings'),
     url(r'^stream/(?P<user_id>[0-9]+)/$', views.stream, name='stream'),
     url(r'^post/$', views.post, name='post'),
+    url(r'^addGroup/$', views.addGroup, name='addGroup'),
     url(r'^follow/$', views.follow, name='follow'),
     url(r'^register/$', views.register, name='register'),
     url('^', include('django.contrib.auth.urls'))

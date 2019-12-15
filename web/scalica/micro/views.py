@@ -9,10 +9,17 @@ from .models import Following, Post, FollowingForm, PostForm, MyUserCreationForm
 import grpc
 import groups_pb2
 import groups_pb2_grpc
+import groupDB_pb2
+import groupDB_pb2_grpc
+from groupDatabase-Django 
+
 
 # Group manager RPC
 channel = grpc.insecure_channel("localhost:50051")
 stub = groups_pb2_grpc.Groups_ManagerStub(channel)
+
+channel2 = grpc.insecure_channel("localhost:50051")
+stub2 = groups_pb2_grpc.Groups_ManagerStub(channel)
 
 # Anonymous views
 #################
@@ -162,4 +169,12 @@ def follow(request):
 
 @login_required
 def settings(request):
+  return render(request, 'micro/settings.html')
+
+  @login_required
+def addGroup(request):
+  #here i wanna call your method here
+  with grpc.insecure_channel('localhost:50052') as channel:
+    stub = groupDB_pb2_grpc.databaseStub(channel)
+    stub.addGroup(groupDB_pb2.addGroupRequest(userId = 1, groupName = "groupname"))
   return render(request, 'micro/settings.html')
