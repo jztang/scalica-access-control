@@ -78,16 +78,17 @@
 
   <hr/>
 
+  
   <h3>Add user to a group</h3>
   <p>Select the user you want to add to the selected group</p>
   <form action="/micro/userslist/" method="post">
     {% csrf_token %}
-    {{ form }}
-  </form>
-
-  <form action="/micro/addToGroup/" method="post">
-    {% csrf_token %}
-    <input type="submit" value="Join" id=submit>
+    <input type="submit" value="Click here to then search for all the users" id=submit>
+    <select name="users" id="users">
+      {% for entry in users %}
+          <option value="{{ entry.id }}">{{ entry }}</option>
+      {% endfor %}
+      </select>
     
   </form>
 

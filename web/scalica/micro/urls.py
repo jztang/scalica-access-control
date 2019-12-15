@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^grouplist/$', views.getGroups, name='getGroups'),
     url(r'^register/$', views.register, name='register'),
     url(r'^addToGroup/$', views.addMemberToGroup, name='addToGroup'),
-    #url(r'^userslist/$', views.getAllUsers, name='getUsers'),
+    url(r'^userslist/$', views.getAllUsers, name='getUsers'),
     url(r'^deleteGroup/$', views.deleteGroup, name='delete'),
     url('^', include('django.contrib.auth.urls'))
 ]

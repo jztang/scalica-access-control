@@ -12,6 +12,8 @@ import groups_pb2_grpc
 import groupDB_pb2
 import groupDB_pb2_grpc
 
+from groupDatabase.models import user, group
+
 import models
 
 
@@ -219,3 +221,8 @@ def addMemberToGroup(request):
   
   return render(request, 'micro/settings.html')
 
+@login_required
+def getAllUsers(request):
+  users = user.objects.all()
+  return render(request, 'micro/settings.html', {'users': users})
+  
