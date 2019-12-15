@@ -2,12 +2,14 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.db import models
+from django import forms
 from django.forms import ModelForm, TextInput
 
 class Post(models.Model):
   user = models.ForeignKey(settings.AUTH_USER_MODEL)
   visibility = models.IntegerField(default=1)
-  group_ID = models.IntegerField(default=0)
+  #group_ID = models.IntegerField(default=0)
+  group_name = models.CharField(max_length=256, blank=True)
   text = models.CharField(max_length=256, default="")
   pub_date = models.DateTimeField('date_posted')
   def __str__(self):
@@ -30,9 +32,17 @@ class Following(models.Model):
 class PostForm(ModelForm):
   class Meta:
     model = Post
-    fields = ('text',)
+    fields = ('text','visibility','group_name')
+    VISIBILITY_CHOICES = (
+      (1, "Public"),
+      (2, "Followers"),
+      (3, "Group"),
+      (4, "Private"),
+      )
     widgets = {
       'text': TextInput(attrs={'id' : 'input_post'}),
+      'visibility': forms.Select(choices=VISIBILITY_CHOICES,attrs={'class': 'form-control'}),
+      'group_name': TextInput(attrs={'id' : 'input_post'})
     }
 
 class FollowingForm(ModelForm):
