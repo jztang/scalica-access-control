@@ -61,6 +61,7 @@
   <p>Type in the name of the group you want to delete</p>
   <form action="/micro/grouplist/" method="post">
     <select name="groups">
+        {% csrf_token %}
       {% for entry in items %}
           <option value="{{ entry.id }}">{{ entry }}</option>
       {% endfor %}
