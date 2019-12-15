@@ -170,7 +170,7 @@ def follow(request):
 def settings(request):
   return render(request, 'micro/settings.html')
 
-  @login_required
+@login_required
 def addGroup(request):
   #here i wanna call your method here
   with grpc.insecure_channel('localhost:50052') as channel:
