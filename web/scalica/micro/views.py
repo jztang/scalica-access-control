@@ -229,8 +229,8 @@ def deleteGroup(request):
     #print(success)
   with grpc.insecure_channel('localhost:50052') as channel2:
     stub2 = groupDB_pb2_grpc.databaseStub(channel2)
-    tempId = stub2.getGroupId(groupDB_pb2.getGroupRequest(userId = int(request.user.id), groupName = groupName)).groupId
-    success = stub2.deleteGroup(groupDB_pb2.deleteGroupRequest(groupName = groupName, userId = int(request.user.id)))
+    tempId = stub2.getGroupId(groupDB_pb2.getGroupRequest(userId = int(request.user.id), groupName = str(groupName))).groupId
+    success = stub2.deleteGroup(groupDB_pb2.deleteGroupRequest(groupName = str(groupName), userId = int(request.user.id)))
   with grpc.insecure_channel('localhost:50051') as channel:
 	  stub =  groups_pb2_grpc.Groups_ManagerStub(channel)
 	  stub.DeleteGroup(groups_pb2.DeleteGroupRequest(group_id = tempId))
