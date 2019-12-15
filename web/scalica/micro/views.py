@@ -175,6 +175,6 @@ def addGroup(request):
   #here i wanna call your method here
   with grpc.insecure_channel('localhost:50052') as channel:
     stub = groupDB_pb2_grpc.databaseStub(channel)
-    stub.addGroup(groupDB_pb2.addGroupRequest(userId = request.user, groupName = request.POST.get('newgroup')))
-    print(stub.getGroupNames(groupDB_pb2.getGroupNamesRequest(userId = 1)))
+    stub.addGroup(groupDB_pb2.addGroupRequest(userId = request.user.id, groupName = request.POST.get('newgroup')))
+    print(stub.getGroupNames(groupDB_pb2.getGroupNamesRequest(userId = request.user.id)))
   return render(request, 'micro/settings.html')
