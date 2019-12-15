@@ -213,6 +213,8 @@ def addMemberToGroup(request):
     stub2 = groupDB_pb2_grpc.databaseStub(channel)
     groupID = stub2.getGroupId(groupDB_pb2.getGroupRequest(groupName = request.POST.get('groups2')))
 
+  with grpc.insecure_channel('localhost:50053') as channel2:
     stub = groups_pb2_grpc.databaseStub(channel)
     stub.AddMember(groups_pb2.AddMemberGroupRequest(groupID = groupID, userId = request.user.id))
+  
   return render(request, 'micro/settings.html')
