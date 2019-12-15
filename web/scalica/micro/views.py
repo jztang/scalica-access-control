@@ -254,7 +254,7 @@ def deleteMember(request):
     print(groupID)
   with grpc.insecure_channel('localhost:50051') as channel:
     stub = groups_pb2_grpc.Groups_ManagerStub(channel)
-    print("this is my member "+ str(request.POST.get('members')))
-    stub.RemoveMember(groups_pb2.RemoveMemberRequest(group_id = str(groupID), user_id = str(request.POST.get('members'))))
+    print("this is my member "+ str(request.POST.get('user')))
+    stub.RemoveMember(groups_pb2.RemoveMemberRequest(group_id = str(groupID), user_id = str(request.POST.get('user'))))
     
   return render(request, 'micro/settings.html')
