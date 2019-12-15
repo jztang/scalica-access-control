@@ -61,7 +61,7 @@
   <p>Type in the name of the group you want to delete</p>
   <form action="/micro/grouplist/" method="post">
     <select name="groups">
-      {% for entry groups %}
+      {% for entry in groups %}
           <option value="{{ entry.id }}">{{ entry.name }}</option>
       {% endfor %}
       </select>
