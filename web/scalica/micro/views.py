@@ -211,7 +211,7 @@ def addMemberToGroup(request):
   #here i wanna call your method here
   with grpc.insecure_channel('localhost:50052') as channel:
     stub2 = groupDB_pb2_grpc.databaseStub(channel)
-    groupID = stub2.getGroupId(groupDB_pb2.getGroupIdRequest(groupName = request.POST.get('groups2')))
+    groupID = stub2.getGroupId(groupDB_pb2.getGroupRequest(groupName = request.POST.get('groups2')))
 
     stub = groups_pb2_grpc.databaseStub(channel)
     stub.AddMember(groups_pb2.AddMemberGroupRequest(groupID = groupID, userId = request.user.id))
