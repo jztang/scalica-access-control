@@ -62,7 +62,7 @@
   <form action="/micro/grouplist/" method="post">
     <select name="groups">
       {% for entry in items %}
-          <option value="{{ entry.id }}">{{ entry.name }}</option>
+          <option value="{{ entry.id }}">{{ entry }}</option>
       {% endfor %}
       </select>
   </form>
