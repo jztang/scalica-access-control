@@ -196,4 +196,4 @@ def getGroups(request):
     groups = str(groups.groupNames)
     items = groups.split(',')
     print(items)
-  return render(request, 'micro/settings.html', {'groups': items})
+  return render(request, 'micro/settings.html', {'items': items})
