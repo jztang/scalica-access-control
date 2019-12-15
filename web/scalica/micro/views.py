@@ -218,3 +218,4 @@ def addMemberToGroup(request):
     stub.AddMember(groups_pb2.AddMemberRequest(group_id = chr(groupID), user_id = chr(request.user.id)))
   
   return render(request, 'micro/settings.html')
+
