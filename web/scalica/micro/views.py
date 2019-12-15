@@ -198,7 +198,7 @@ def getGroups(request):
     print(items)
   return render(request, 'micro/settings.html', {'items': items})
 
-  @login_required
+@login_required
 def deleteGroup(request):
   #here i wanna call your method here
   with grpc.insecure_channel('localhost:50052') as channel:
