@@ -214,7 +214,7 @@ def getMembers(request):
   #here i wanna call your method here
   with grpc.insecure_channel('localhost:50051') as channel:
     stub = groups_pb2_grpc.Groups_ManagerStub(channel)
-    groupID = getGroupID(request.POST.get('groups2'), request.user.id)
+    groupID = getGroupID(groupName = request.POST.get('groups2'), userID = request.user.id)
     stub.AllMembers(groups_pb2.AllMembersRequest(group_id = groupID))
   return render(request, 'micro/settings.html')
 
