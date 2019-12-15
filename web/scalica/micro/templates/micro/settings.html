@@ -100,6 +100,7 @@
   <p> Then click here to next button to search the users in this group</p>
   <form action="/micro/memberlist/" method="post">
     {% csrf_token %}
+    <input type=text id=usersingroup name=usersingroup>
     <input type="submit" value="Click here to then search for the people within the group" id=submit>
     <select name="members" id="members">
       {% for entry in members %}
