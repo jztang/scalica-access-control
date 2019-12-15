@@ -50,6 +50,7 @@
   <h3>Add a group</h3>
   <p>Type in the name of the group you want to create</p>
   <form action="/micro/addGroup/" method="post">
+    {% csrf_token %}
     <input type=text id=newgroup name=newgroup>
     <input type="submit" value="Submit" id=submit>
   </form>
