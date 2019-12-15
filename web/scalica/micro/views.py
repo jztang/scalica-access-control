@@ -191,7 +191,7 @@ def getGroups(request):
   #here i wanna call your method here
   with grpc.insecure_channel('localhost:50052') as channel:
     stub = groupDB_pb2_grpc.databaseStub(channel)
-    groups = stub.getGroupNames(userId = request.user.id)
+    groups = stub.getGroupNames(request)
     items = groups.split(",")
     print(groups)
     print(items)
