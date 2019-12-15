@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^post/$', views.post, name='post'),
     url(r'^addGroup/$', views.addGroup, name='addGroup'),
     url(r'^follow/$', views.follow, name='follow'),
-    url(r'^grouplist/$', views.getGroupNames, name='getGroups'),
+    url(r'^grouplist/$', views.getGroups, name='getGroups'),
     url(r'^register/$', views.register, name='register'),
     url('^', include('django.contrib.auth.urls'))
 ]
