@@ -203,5 +203,5 @@ def deleteGroup(request):
   #here i wanna call your method here
   with grpc.insecure_channel('localhost:50052') as channel:
     stub = groupDB_pb2_grpc.databaseStub(channel)
-    stub.DeleteGroup(groups_pb2.DeleteGroupRequest(group_id = request.POST.get('groups'))
+    stub.deleteGroup(groups_pb2.deleteGroupRequest(group_id = request.POST.get('groups'))
   return render(request, 'micro/settings.html')
