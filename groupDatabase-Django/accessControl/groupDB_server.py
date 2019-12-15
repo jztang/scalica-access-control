@@ -72,7 +72,7 @@ class database(groupDB_pb2_grpc.databaseServicer):
 					stub.DeleteGroup(groups_pb2.DeleteGroupRequest(group_id = str(i.id)))
 				i.delete()
 				print("wsa able to delete")
-				return groups_pb2.deleteGroupReply(success = True)
+				return groupDB_pb2.deleteGroupReply(success = True)
 
 		return groupDB_pb2.deleteGroupReply(success = False)
 
