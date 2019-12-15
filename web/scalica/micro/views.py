@@ -12,6 +12,8 @@ import groups_pb2_grpc
 import groupDB_pb2
 import groupDB_pb2_grpc
 
+import sys
+
 sys.path.append("../../web/scalica/micro")
 
 from models import user, group
