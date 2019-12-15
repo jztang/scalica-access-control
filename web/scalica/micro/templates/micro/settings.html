@@ -59,10 +59,12 @@
 
   <h3>Delete a group</h3>
   <p>Type in the name of the group you want to delete</p>
-  <form action="" method="post">
-        {% csrf_token %}
-        {{ form }}
-    <input type="submit" value="Submit" id=submit>
+  <form action="/micro/grouplist/" method="post">
+    <select name="groups">
+      {% for entry groups %}
+          <option value="{{ entry.id }}">{{ entry.name }}</option>
+      {% endfor %}
+      </select>
   </form>
 
   <hr/>
