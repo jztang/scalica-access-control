@@ -18,6 +18,6 @@ urlpatterns = [
     #url(r'^addToGroup/$', views.addMemberToGroup, name='addToGroup'),
     #url(r'^userslist/$', views.getAllUsers, name='getUsers'),
     url(r'^deleteGroup/$', views.deleteGroup, name='delete'),
-    #url(r'^deleteMember/$', views.deleteMember, name='deleteMember'),
+    url(r'^deleteMember/$', views.deleteMember, name='deleteMember'),
     url('^', include('django.contrib.auth.urls'))
 ]
