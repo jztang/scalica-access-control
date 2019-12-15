@@ -69,7 +69,7 @@ class database(groupDB_pb2_grpc.databaseServicer):
 			if i.groupName == currentGroupName:
 				with grpc.insecure_channel('localhost:50051') as channel:
 					stub = groups_pb2_grpc.Groups_ManagerStub(channel)
-					stub.DeleteGroup(groups_pb2.DeleteGroupRequest(group_id = str(i.id))).result
+					stub.DeleteGroup(groups_pb2.DeleteGroupRequest(group_id = str(i.id)))
 				i.delete()
 				print("wsa able to delete")
 				return groupDB_pb2.deleteGroupReply(success = True)
