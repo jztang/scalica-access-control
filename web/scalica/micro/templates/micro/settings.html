@@ -66,9 +66,23 @@
       {% for entry in items %}
           <option value="{{ entry.id }}">{{ entry }}</option>
       {% endfor %}
-      
       </select>
   </form>
+  <form action="/micro/deleteGroup/" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Click here to then search for the group" id=submit>
+    <select name="groups">
+      {% for entry in items %}
+          <option value="{{ entry.id }}">{{ entry }}</option>
+      {% endfor %}
+      </select>
+  </form>
+
+
+
+
+
+
 
   <hr/>
 
