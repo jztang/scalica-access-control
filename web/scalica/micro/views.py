@@ -176,4 +176,5 @@ def addGroup(request):
   with grpc.insecure_channel('localhost:50052') as channel:
     stub = groupDB_pb2_grpc.databaseStub(channel)
     stub.addGroup(groupDB_pb2.addGroupRequest(userId = 1, groupName = "groupname"))
+    print(stub.getGroupNames(groupDB_pb2.getGroupNamesRequest(userId = 1)))
   return render(request, 'micro/settings.html')
