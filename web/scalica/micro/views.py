@@ -18,7 +18,7 @@ channel = grpc.insecure_channel("localhost:50051")
 stub = groups_pb2_grpc.Groups_ManagerStub(channel)
 
 channel2 = grpc.insecure_channel("localhost:50052")
-stub2 = groupDB_pb2_grpc.databaseStub(channel)
+stub2 = groupDB_pb2_grpc.databaseStub(channel2)
 
 # Anonymous views
 #################
