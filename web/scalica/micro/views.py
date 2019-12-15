@@ -215,10 +215,10 @@ def getMembers(request):
   with grpc.insecure_channel('localhost:50052') as channel2:
     stub2 = groupDB_pb2_grpc.databaseStub(channel2)
     groupID = stub2.getGroupId(groupDB_pb2.deleteGroupRequest(groupName = request.POST.get('groups2'), userId = request.user.id))
-    print(str(groupID))
+    print(str(groupID.groupId))
   with grpc.insecure_channel('localhost:50051') as channel:
     stub = groups_pb2_grpc.Groups_ManagerStub(channel)
-    members = stub.AllMembers(groups_pb2.AllMembersRequest(group_id = groupID.groupId))
+    members = stub.AllMembers(groups_pb2.AllMembersRequest(group_id = chr(groupID.groupId)))
     print(members)
   return render(request, 'micro/settings.html',{'members': members})
 
