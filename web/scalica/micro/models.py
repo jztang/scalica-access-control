@@ -46,8 +46,3 @@ class MyUserCreationForm(UserCreationForm):
       'username' : '',
     }
 
-class GroupForm(ModelForm){
-
-
-  
-}
