@@ -42,7 +42,7 @@ class PostForm(ModelForm):
     widgets = {
       'text': TextInput(attrs={'id' : 'input_post'}),
       'visibility': forms.Select(choices=VISIBILITY_CHOICES,attrs={'class': 'form-control'}),
-      'group_name': TextInput(attrs={'id' : 'input_post'})
+      'group_name': TextInput()#attrs={'id' : 'input_group'})
     }
 
 class FollowingForm(ModelForm):
