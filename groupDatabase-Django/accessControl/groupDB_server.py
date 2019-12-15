@@ -62,6 +62,7 @@ class database(groupDB_pb2_grpc.databaseServicer):
 		except user.DoesNotExist:
 			return groupDB_pb2.deleteGroupReply(success = False)
 
+		print("hi")
 		print("filter set" + filterSet)
 		for i in filterSet:
 			if i.groupName == currentGroupName:
