@@ -74,10 +74,10 @@ class GroupManager(groups_pb2_grpc.Groups_ManagerServicer): #manager system
 		if (val==0):
 			return groups_pb2.DeleteGroupReply(result=redisClient_0.delete(request.group_id))
 		elif (val==1):
-			return groups_pb2.DeleteReply(result=redisClient_1.delete(request.group_id))
+			return groups_pb2.DeleteGroupReply(result=redisClient_1.delete(request.group_id))
 		elif (val==2):
-			return groups_pb2.DeleteReply(result=redisClient_2.delete(request.group_id))
-		return groups_pb2.DeleteReply(result=redisClient_3.delete(request.group_id))
+			return groups_pb2.DeleteGroupReply(result=redisClient_2.delete(request.group_id))
+		return groups_pb2.DeleteGroupReply(result=redisClient_3.delete(request.group_id))
 
 
 
