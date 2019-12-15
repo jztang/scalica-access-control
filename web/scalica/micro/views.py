@@ -194,6 +194,6 @@ def getGroups(request):
     groups = stub.getGroupNames(groupDB_pb2.getGroupNamesRequest(userId = request.user.id))
     print(groups.groupNames)
     groups = str(groups.groupNames)
-    items = groups.split(', ')
+    items = groups.split(',')
     print(items)
   return render(request, 'micro/settings.html', {'groups': items})
