@@ -220,8 +220,8 @@ def getMembers(request):
   #here i wanna call your method here
   with grpc.insecure_channel('localhost:50052') as channel2:
     stub2 = groupDB_pb2_grpc.databaseStub(channel2)
-    print(request.POST.get('groups2'))
-    groupID = stub2.getGroupId(groupDB_pb2.getGroupRequest(groupName = request.POST.get('groupname'), userId = request.user.id))
+    print(request.POST.get('usersingroup'))
+    groupID = stub2.getGroupId(groupDB_pb2.getGroupRequest(groupName = request.POST.get('usersingroup'), userId = request.user.id))
     print(str(groupID.groupId))
   with grpc.insecure_channel('localhost:50051') as channel:
     stub = groups_pb2_grpc.Groups_ManagerStub(channel)
