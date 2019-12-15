@@ -12,11 +12,6 @@ import groups_pb2_grpc
 import groupDB_pb2
 import groupDB_pb2_grpc
 
-import sys
-
-sys.path.append("../../groupDatabase-Django/accessControl/")
-
-from groupDatabase.models import user, group
 
 import models
 
@@ -217,16 +212,11 @@ def addMemberToGroup(request):
   #here i wanna call your method here
   with grpc.insecure_channel('localhost:50052') as channel2:
     stub2 = groupDB_pb2_grpc.databaseStub(channel2)
-    groupID = stub2.getGroupId(groupDB_pb2.getGroupRequest(groupName = request.POST.get('groups2'))).groupId
-
-  with grpc.insecure_channel('localhost:50051') as channel:
-    stub = groups_pb2_grpc.Groups_ManagerStub(channel)
-    stub.AddMember(groups_pb2.AddMemberRequest(group_id = chr(groupID), user_id = chr(request.user.id)))
+    groupID = stub2.getGroupId(groupDB_pb2.deleteGroupRequest(groupName = request.POST.get('groups2')))
   
+  with grpc.insecure_channel('localhost:50051') as channel:
+    stub = group_pb2_grpc.databaseStub(channel)
+    groups = stub.AddMember(groupDB_pb2.AddMemberRequest(userId = request.POST.get('user'), groupId = groupID)
+
   return render(request, 'micro/settings.html')
 
-@login_required
-def getAllUsers(request):
-  users = user.objects.all()
-  return render(request, 'micro/settings.html', {'users': users})
-  

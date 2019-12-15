@@ -78,20 +78,28 @@
 
   <hr/>
 
-  
+
   <h3>Add user to a group</h3>
-  <p>Select the user you want to add to the selected group</p>
-  <form action="/micro/userslist/" method="post">
+  <p>What group do you want a member to?</p>
+  <form action="/micro/grouplist/" method="post">
     {% csrf_token %}
-    <input type="submit" value="Click here to then search for all the users" id=submit>
-    <select name="users" id="users">
-      {% for entry in users %}
-          <option value="{{ entry.id }}">{{ entry }}</option>
-      {% endfor %}
-      </select>
+    <input type="submit" value="Search groups" id=submit>
+    <select name="groups2" id="groups2">
+        {% for entry in items %}
+            <option value="{{ entry.id }}">{{ entry }}</option>
+        {% endfor %}
+    </select>
     
   </form>
 
+  <form action="/micro/addToGroup/" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Add" id=submit>
+    
+  </form>
+
+  
+  
   <hr/>
 
 
