@@ -187,7 +187,7 @@ def addGroup(request):
     stub2.addGroup(groupDB_pb2.addGroupRequest(userId = request.user.id, groupName = request.POST.get('newgroup')))
     groupID = stub2.getGroupId(groupDB_pb2.deleteGroupRequest(groupName = request.POST.get('groupname'), userId = request.user.id))
     print(stub2.getGroupNames(groupDB_pb2.getGroupNamesRequest(userId = request.user.id)))
-    print(groupID)
+    print('group id is' + str(groupID))
 
   with grpc.insecure_channel('localhost:50051') as channel:
     stub = groups_pb2_grpc.Groups_ManagerStub(channel)
