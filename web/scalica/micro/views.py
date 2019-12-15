@@ -11,7 +11,6 @@ import groups_pb2
 import groups_pb2_grpc
 import groupDB_pb2
 import groupDB_pb2_grpc
-from groupDatabase-Django 
 
 
 # Group manager RPC
