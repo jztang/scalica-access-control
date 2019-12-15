@@ -14,9 +14,9 @@ import groupDB_pb2_grpc
 
 import sys
 
-sys.path.append("../../web/scalica/micro")
+sys.path.append("../../groupDatabase-Django/accessControl/")
 
-from models import user, group
+from groupDatabase.models import user, group
 
 import models
 
