@@ -218,7 +218,7 @@ def getMembers(request):
 
   with grpc.insecure_channel('localhost:50051') as channel:
     stub = groups_pb2_grpc.Groups_ManagerStub(channel)
-    members = stub.AllMembers(groups_pb2.AllMembersRequest(group_id = groupID))
+    members = stub.AllMembers(groups_pb2.AllMembersRequest(group_id = chr(groupID)))
   return render(request, 'micro/settings.html',{'members': members})
 
 #@login_required
