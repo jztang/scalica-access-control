@@ -192,8 +192,8 @@ def getGroups(request):
   with grpc.insecure_channel('localhost:50052') as channel:
     stub = groupDB_pb2_grpc.databaseStub(channel)
     groups = stub.getGroupNames(groupDB_pb2.getGroupNamesRequest(userId = request.user.id))
-    print(groups.groupNames)
+    print("hey" + groups.groupNames)
     groups = str(groups.groupNames)
     items = groups.split(', ')
-    print(items)
+    print("hey2" + items)
   return render(request, 'micro/settings.html', {'groups': items})
