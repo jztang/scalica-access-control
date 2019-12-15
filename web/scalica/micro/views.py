@@ -186,6 +186,10 @@ def addGroup(request):
     stub = groupDB_pb2_grpc.databaseStub(channel2)
     stub.addGroup(groupDB_pb2.addGroupRequest(userId = request.user.id, groupName = request.POST.get('newgroup')))
     print(stub.getGroupNames(groupDB_pb2.getGroupNamesRequest(userId = request.user.id)))
+
+  with grpc.insecure_channel('localhost:50051') as channel:
+    stub = groups_pb2_grpc.Groups_ManagerStub(channel)
+    members = stub.AddMember(groups_pb2.AddMemberRequest(group_id = str(groupID.groupId), user_id = request.user.id))
   return render(request, 'micro/settings.html')
 
 
@@ -215,11 +219,11 @@ def getMembers(request):
   with grpc.insecure_channel('localhost:50052') as channel2:
     stub2 = groupDB_pb2_grpc.databaseStub(channel2)
     print(request.POST.get('groups2'))
-    groupID = stub2.getGroupId(groupDB_pb2.deleteGroupRequest(groupName = 'test4', userId = request.user.id))
+    groupID = stub2.getGroupId(groupDB_pb2.deleteGroupRequest(groupName = request.POST.get('groupname'), userId = request.user.id))
     print(str(groupID.groupId))
   with grpc.insecure_channel('localhost:50051') as channel:
     stub = groups_pb2_grpc.Groups_ManagerStub(channel)
-    members = stub.AllMembers(groups_pb2.AllMembersRequest(group_id = '33'))
+    members = stub.AllMembers(groups_pb2.AllMembersRequest(group_id = str(groupID.groupId)))
     members = members.result
     print(members)
   return render(request, 'micro/settings.html',{'members': members})
