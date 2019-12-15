@@ -193,6 +193,6 @@ def getGroups(request):
     stub = groupDB_pb2_grpc.databaseStub(channel)
     groups = stub.getGroupNames(groupDB_pb2.getGroupNamesRequest(userId = request.user.id))
     print(groups)
-    items = groups.split(',')
-    print(items)
+    #items = groups.split(',')
+    #print(items)
   return render(request, 'micro/settings.html', {'groups': groups})
