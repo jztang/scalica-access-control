@@ -215,6 +215,6 @@ def addMemberToGroup(request):
 
   with grpc.insecure_channel('localhost:50051') as channel:
     stub = groups_pb2_grpc.Groups_ManagerStub(channel)
-    stub.AddMember(groups_pb2.AddMemberRequest(groupID = groupID, userId = request.user.id))
+    stub.AddMember(groups_pb2.AddMemberRequest(group_id = groupID, user_id = request.user.id))
   
   return render(request, 'micro/settings.html')
