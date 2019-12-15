@@ -79,6 +79,7 @@ class database(groupDB_pb2_grpc.databaseServicer):
 			filterSet = group.objects.filter(user=currentUser)
 			#currentGroup = group.objects.get(user = currentUser, groupName = currentGroupName)
 		except user.DoesNotExist:
+			print("user dne")
 			return groupDB_pb2.getGroupReply(groupId = 0)
 
 		#print(user.objects.all())
@@ -87,6 +88,7 @@ class database(groupDB_pb2_grpc.databaseServicer):
 			if i.groupName == currentGroupName:
 				returnID = i.id
 				return groupDB_pb2.getGroupReply(groupId = returnID)
+		print("end")
 		return groupDB_pb2.getGroupReply(groupId = 0)
 
 	def removeAll(self, request, context):
