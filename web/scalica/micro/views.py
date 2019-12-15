@@ -233,7 +233,7 @@ def deleteGroup(request):
     success = stub2.deleteGroup(groupDB_pb2.deleteGroupRequest(groupName = str(groupName), userId = int(request.user.id)))
   with grpc.insecure_channel('localhost:50051') as channel:
 	  stub =  groups_pb2_grpc.Groups_ManagerStub(channel)
-	  stub.DeleteGroup(groups_pb2.DeleteGroupRequest(group_id = tempId))
+	  stub.DeleteGroup(groups_pb2.DeleteGroupRequest(group_id = str(tempId)))
   return render(request, 'micro/settings.html')
 
 
