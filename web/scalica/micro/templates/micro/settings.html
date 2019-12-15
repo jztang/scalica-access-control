@@ -87,7 +87,7 @@
 
 
   <h3>Delete a user from a group</h3>
-  <p>Select the user you remove from the selected group</p>
+  <p>First click search, to search the groups</p>
   <form action="/micro/grouplist/" method="post">
     {% csrf_token %}
     <input type="submit" value="Click here to then search for the group" id=submit>
@@ -97,11 +97,10 @@
       {% endfor %}
       </select>
   </form>
+  <p> Then click here to next button to search the users in this group</p>
   <form action="/micro/memberlist/" method="post">
     {% csrf_token %}
     <input type="submit" value="Click here to then search for the people within the group" id=submit>
-    <p> Type in the name of the group here</p>
-    <input type=text id=groupname name=groupname>
     <select name="members" id="members">
       {% for entry in members %}
           <option value="{{ entry.id }}">{{ entry }}</option>
