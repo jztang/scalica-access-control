@@ -66,7 +66,7 @@ class database(groupDB_pb2_grpc.databaseServicer):
 				
 
 				with grpc.insecure_channel('localhost:50051') as channel:
-					stub = groups_pb2_grpc.Groups_ManagerServicer(channel)
+					stub = groups_pb2_grpc.Groups_ManagerStub(channel)
 					stub.DeleteGroup(groups_pb2.DeleteGroupRequest(group_id = str(i.id)))
 
 				i.delete()
