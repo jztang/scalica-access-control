@@ -14,8 +14,11 @@ from concurrent import futures
 
 import groupDB_pb2
 import groupDB_pb2_grpc
-#import groups_pb2
-#import groups_pb2_grpc
+import groups_pb2
+import groups_pb2_grpc
+
+channel = grpc.insecure_channel("localhost:50051")
+stub = groups_pb2_grpc.Groups_ManagerStub(channel)
 
 
 class database(groupDB_pb2_grpc.databaseServicer):
@@ -63,7 +66,7 @@ class database(groupDB_pb2_grpc.databaseServicer):
 				
 
 				with grpc.insecure_channel('localhost:50051') as channel:
-					stub =  groups_pb2_grpc.databaseStub(channel)
+					stub = groups_pb2_grpc.Groups_ManagerServicer(channel)
 					stub.DeleteGroup(groups_pb2.DeleteGroupRequest(group_id = str(i.id)))
 
 				i.delete()
