@@ -76,24 +76,33 @@
   </form>
 
 
-
-
-
-
-
   <hr/>
 
   <h3>Add user to a group</h3>
-  <p>Select the user you want to add to the selected group</p>
-  <form action="" method="post">
-        {% csrf_token %}
-        {{ form }}
-        {% csrf_token %}
-        {{ form }}
-    <input type="submit" value="Submit" id=submit>
+  <p>Select the group you would like to join</p>
+  <form action="/micro/grouplist/" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Click here to then search for the group" id=submit>
+    <select name="groups2" id="groups2">
+      {% for entry in items %}
+          <option value="{{ entry.id }}">{{ entry }}</option>
+      {% endfor %}
+      </select>
+  </form>
+
+  <form action="/micro/addToGroup/" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Join" id=submit>
+    
   </form>
 
   <hr/>
+
+
+
+
+
+
 
   <h3>Delete a user from a group</h3>
   <p>Select the user you remove from the selected group</p>
