@@ -217,10 +217,11 @@ def getGroups(request):
 @login_required
 def deleteGroup(request):
   #here i wanna call your method here
+  groupName = request.POST.get('groups')
   with grpc.insecure_channel('localhost:50052') as channel2:
     stub2 = groupDB_pb2_grpc.databaseStub(channel2)
-    print(request.POST.get('groups'))
-    groupID = stub2.getGroupId(groupDB_pb2.getGroupRequest(groupName = request.POST.get('groups'), userId = request.user.id))
+    print(groupName)
+    groupID = stub2.getGroupId(groupDB_pb2.getGroupRequest(groupName = groupName, userId = request.user.id))
     print(str(groupID.groupId))
   with grpc.insecure_channel('localhost:50051') as channel:
     stub = groups_pb2_grpc.Groups_ManagerStub(channel)
