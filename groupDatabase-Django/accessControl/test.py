@@ -1,13 +1,14 @@
 from __future__ import print_function
 import grpc
-import groups_pb2
-import groups_pb2_grpc
+import groupDB_pb2
+import groupDB_pb2_grpc
 
 if __name__=='__main__':
-	channel = grpc.insecure_channel('localhost:50052')
-	stub = groupDB_pb2_grpc.Groups_ManagerStub(channel)
+    # channel2 = grpc.insecure_channel("localhost:50052")
+    # stub2 = groupDB_pb2_grpc.databaseStub(channel2)
 
-	#stub.AddMember(groups_pb2.AddMemberRequest(group_id='152', user_id='3'))
-	stub.addGroup(groupDB_pb2.addGroupRequest(userId=1, groupName="Group 1"))
-	stub.addGroup(groupDB_pb2.addGroupRequest(userId=1, groupName="Group 2"))
-	stub.addGroup(groupDB_pb2.addGroupRequest(userId=1, groupName="Group 3"))
+    # print(stub2.getGroupId(groupDB_pb2.getGroupRequest(userId=1, groupName="Group Name")).groupId)
+
+    with grpc.insecure_channel('localhost:50052') as channel:
+        stub = groupDB_pb2_grpc.databaseStub(channel)
+        print(stub.getGroupId(groupDB_pb2.getGroupRequest(userId=1, groupName="Group Name")).groupId)

@@ -28,6 +28,12 @@ class database(groupDB_pb2_grpc.databaseServicer):
 		#lookup 
 		try:
 			currentUser = user.objects.get(userNumber = currentUserId)
+			filterSet = group.objects.filter(user=currentUser)
+			for i in filterSet:
+				if i.groupName == currentGroupName:
+					return groupDB_pb2.addGroupReply(success = False)
+
+
 
 		except user.DoesNotExist:
 			currentUser = user(userNumber = currentUserId)
@@ -55,12 +61,10 @@ class database(groupDB_pb2_grpc.databaseServicer):
 		for i in filterSet:
 			if i.groupName == currentGroupName:
 				
-				#RPC to liran
-				'''
+
 				with grpc.insecure_channel('localhost:50051') as channel:
 					stub =  groups_pb2_grpc.databaseStub(channel)
 					stub.DeleteGroup(groups_pb2.DeleteGroupRequest(group_id = str(i.id)))
-				'''
 
 				i.delete()
 				return groupDB_pb2.deleteGroupReply(success = True)
@@ -74,7 +78,7 @@ class database(groupDB_pb2_grpc.databaseServicer):
 			currentUser = user.objects.get(userNumber = currentUserId)
 			filterSet = group.objects.filter(user=currentUser)
 			#currentGroup = group.objects.get(user = currentUser, groupName = currentGroupName)
-		except group.DoesNotExist:
+		except user.DoesNotExist:
 			return groupDB_pb2.getGroupReply(groupId = 0)
 
 		#print(user.objects.all())
