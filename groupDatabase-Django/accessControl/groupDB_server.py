@@ -74,6 +74,7 @@ class database(groupDB_pb2_grpc.databaseServicer):
 	def getGroupId(self, request, context):
 		currentUserId = request.userId
 		currentGroupName = request.groupName
+		print("current group name "+request.groupName)
 		try:
 			currentUser = user.objects.get(userNumber = currentUserId)
 			filterSet = group.objects.filter(user=currentUser)
