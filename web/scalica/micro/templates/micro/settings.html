@@ -70,6 +70,8 @@
   </form>
   <form action="/micro/deleteGroup/" method="post">
     {% csrf_token %}
+    <p> Type in the name of the group you want to delete here </p>
+    <input type=text id=groupp name=groupp>
     <input type="submit" value="Delete" id=submit>
   </form>
 
