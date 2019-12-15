@@ -97,7 +97,7 @@
       {% endfor %}
       </select>
   </form>
-  <form action="/micro/memberlist/" method="post">
+  <form action="/micro/grouplist/" method="post">
     {% csrf_token %}
     <input type="submit" value="Click here to then search for the people within the group" id=submit>
     <select name="members" id="members">
