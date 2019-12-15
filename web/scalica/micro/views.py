@@ -210,11 +210,11 @@ def deleteGroup(request):
 def addMemberToGroup(request):
   #here i wanna call your method here
   with grpc.insecure_channel('localhost:50052') as channel2:
-    stub2 = groupDB_pb2_grpc.databaseStub(channel)
+    stub2 = groupDB_pb2_grpc.databaseStub(channel2)
     groupID = stub2.getGroupId(groupDB_pb2.getGroupRequest(groupName = request.POST.get('groups2')))
 
   with grpc.insecure_channel('localhost:50051') as channel:
-    stub = groups_pb2_grpc.databaseStub(channel2)
+    stub = groups_pb2_grpc.databaseStub(channel)
     stub.AddMember(groups_pb2.AddMemberGroupRequest(groupID = groupID, userId = request.user.id))
   
   return render(request, 'micro/settings.html')
