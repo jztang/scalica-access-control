@@ -220,5 +220,5 @@ def addMemberToGroup(request):
 def getGroupID(request, request2):
   with grpc.insecure_channel('localhost:50052') as channel2:
     stub2 = groupDB_pb2_grpc.databaseStub(channel2)
-    groupID = stub2.getGroupId(groupDB_pb2.deleteGroupRequest(groupName = request, userId = request2)
+    groupID = stub2.getGroupId(groupDB_pb2.deleteGroupRequest(groupName = request, userId = request2))
   return groupID
