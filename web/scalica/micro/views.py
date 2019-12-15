@@ -249,10 +249,12 @@ def getGroupID(request, request2):
 def deleteMember(request):
   with grpc.insecure_channel('localhost:50052') as channel2:
     stub2 = groupDB_pb2_grpc.databaseStub(channel2)
+    print("this is what i entered "+request.POST.get('group'))
     groupID = stub2.getGroupId(groupDB_pb2.getGroupRequest(groupName = request.POST.get('group'), userId = request.user.id)).groupId
     print(groupID)
   with grpc.insecure_channel('localhost:50051') as channel:
     stub = groups_pb2_grpc.Groups_ManagerStub(channel)
+    print("this is my member "+ str(request.POST.get('members')))
     stub.RemoveMember(groups_pb2.RemoveMemberRequest(group_id = str(groupID), user_id = str(request.POST.get('members'))))
     
   return render(request, 'micro/settings.html')
