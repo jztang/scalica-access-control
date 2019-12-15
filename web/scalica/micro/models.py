@@ -45,3 +45,9 @@ class MyUserCreationForm(UserCreationForm):
     help_texts = {
       'username' : '',
     }
+
+class GroupForm(ModelForm){
+
+
+  
+}

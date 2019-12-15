@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package groups_members;
+
+service Groups_Manager{
+	rpc AddMember(AddMemberRequest) returns (AddMemberReply) {}
+
+	rpc RemoveMember(RemoveMemberRequest) returns (RemoveMemberReply){}
+
+	rpc Contains(ContainsRequest) returns (ContainsReply){}
+
+	rpc AllMembers(AllMembersRequest) returns (AllMembersReply){}
+
+	rpc DeleteGroup(DeleteGroupRequest) returns (DeleteGroupReply){}
+}
+
+message AddMemberRequest{
+	string group_id=1;
+	string user_id=2;
+}
+message AddMemberReply{
+	int32 result=1;
+}
+
+message RemoveMemberRequest{
+	string group_id=1;
+	string user_id=2;
+}
+message RemoveMemberReply{
+	int32 result=1;
+}
+
+message ContainsRequest{
+	string group_id=1;
+	string user_id=2;
+}
+message ContainsReply{
+	int32 result=1;
+}
+
+message AllMembersRequest{
+	string group_id=1;
+}
+message AllMembersReply{
+	repeated string result=1;
+}
+
+message DeleteGroupRequest{
+	string group_id=1;
+}
+message DeleteGroupReply{
+	int32 result=1;
+}
