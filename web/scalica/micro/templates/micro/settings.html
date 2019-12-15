@@ -82,14 +82,8 @@
   <p>Select the user you want to add to the selected group</p>
   <form action="/micro/follow/" method="post">
     {% csrf_token %}
-    <select name="users" id="users">
-        {% for entry in form %}
-            <option value="{{ entry.id }}">{{ entry }}</option>
-        {% endfor %}
-        </select>
-    <input type="submit" value="Submit" />
+    {{ form }}
   </form>
-
 
   <form action="/micro/addToGroup/" method="post">
     {% csrf_token %}
