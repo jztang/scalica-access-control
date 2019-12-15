@@ -220,6 +220,7 @@ def getMembers(request):
     stub = groups_pb2_grpc.Groups_ManagerStub(channel)
     members = stub.AllMembers(groups_pb2.AllMembersRequest(group_id = bytes(groupID.groupId)))
     members = members.result
+    print(members)
   return render(request, 'micro/settings.html',{'members': members})
 
 #@login_required
