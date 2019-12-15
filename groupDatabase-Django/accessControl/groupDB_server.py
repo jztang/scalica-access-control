@@ -53,6 +53,7 @@ class database(groupDB_pb2_grpc.databaseServicer):
 		currentUserId = request.userId
 		currentGroupName = request.groupName
 		print(currentGroupName)
+		print(currentUserId)
 
 		#lookup 
 		try:
