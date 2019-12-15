@@ -83,7 +83,7 @@ class database(groupDB_pb2_grpc.databaseServicer):
 			return groupDB_pb2.getGroupReply(groupId = 0)
 
 		#print(user.objects.all())
-		#print(group.objects.all())
+		print(filterSet)
 		for i in filterSet:
 			if i.groupName == currentGroupName:
 				returnID = i.id
