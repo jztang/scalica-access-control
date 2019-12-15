@@ -101,12 +101,12 @@
     {% csrf_token %}
     <input type="submit" value="Click here to then search for the people within the group" id=submit>
     <select name="members" id="members">
-      {% for entry in items %}
+      {% for entry in members %}
           <option value="{{ entry.id }}">{{ entry }}</option>
       {% endfor %}
       </select>
   </form>
-  
+
   <form action="/micro/deleteMember/" method="post">
     {% csrf_token %}
     <input type="submit" value="Delete" id=submit>
