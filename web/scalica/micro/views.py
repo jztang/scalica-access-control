@@ -277,9 +277,9 @@ def addMemberToGroup(request):
 	#get group id
   with grpc.insecure_channel('localhost:50052') as channel2:
     stub2 = groupDB_pb2_grpc.databaseStub(channel2)
-    groupID = stub2.getGroupId(groupDB_pb2.getGroupRequest(groupName = str(request.POST.get('groupname1')), userId = str(request.user.id))).groupId
+    groupID = stub2.getGroupId(groupDB_pb2.getGroupRequest(groupName = str(request.POST.get('groupname1')), userId = int(request.user.id))).groupId
 
   with grpc.insecure_channel('localhost:50051') as channel:
   	stub = groups_pb2_grpc.Groups_ManagerStub(channel)
-  	print(stub.AddMember(groups_pb2.AddMemberRequest(group_id=str(groupID), user_id=str(request.POST.get('username1')))).result) # print to make sure it works
+  	print(stub.AddMember(groups_pb2.AddMemberRequest(group_id=str(groupID), user_id=int(request.POST.get('username1')))).result) # print to make sure it works
   return render(request, 'micro/settings.html')
