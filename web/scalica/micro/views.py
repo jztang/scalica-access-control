@@ -12,6 +12,8 @@ import groups_pb2_grpc
 import groupDB_pb2
 import groupDB_pb2_grpc
 
+
+
 #import sys
 
 
@@ -286,6 +288,6 @@ def addMemberToGroup(request):
 
 @login_required
 def getUserId(request):
-  userids = request.user.id
+  userids = [int(request.user.id)]
   return render(request, 'micro/settings.html',{'userids': userids})
   
