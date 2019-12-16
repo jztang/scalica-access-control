@@ -285,7 +285,7 @@ def addMemberToGroup(request):
   return render(request, 'micro/settings.html')
 
 @login_required
-def getUserId(request, request2):
+def getUserId(request):
   userids = request.user.id
   return render(request, 'micro/settings.html',{'userids': userids})
   
