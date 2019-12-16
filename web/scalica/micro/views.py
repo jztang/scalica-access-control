@@ -218,15 +218,6 @@ def getGroups(request):
 def deleteGroup(request):
   #here i wanna call your method here
   groupName = request.POST.get('groupp')
-  #with grpc.insecure_channel('localhost:50052') as channel2:
-   # stub2 = groupDB_pb2_grpc.databaseStub(channel2)
-    #print(groupName)
-    #groupID = stub2.getGroupId(groupDB_pb2.getGroupRequest(groupName = groupName, userId = request.user.id))
-    #print(str(groupID.groupId))
-  #with grpc.insecure_channel('localhost:50052') as channel2:
-    #stub2 = groupDB_pb2_grpc.databaseStub(channel2)
-    #success = stub2.deleteGroup(groupDB_pb2.deleteGroupRequest(groupName = groupName, userId = int(request.user.id)))
-    #print(success)
   with grpc.insecure_channel('localhost:50052') as channel2:
     stub2 = groupDB_pb2_grpc.databaseStub(channel2)
     tempId = stub2.getGroupId(groupDB_pb2.getGroupRequest(userId = int(request.user.id), groupName = str(groupName))).groupId
@@ -279,5 +270,16 @@ def deleteMember(request):
     print("this is my member "+ str(request.POST.get('user')))
     stub.RemoveMember(groups_pb2.RemoveMemberRequest(group_id = str(groupID), user_id = str(request.POST.get('user'))))
     print(request.user.id)
-    
+  return render(request, 'micro/settings.html')
+
+@login_required
+def addMemberToGroup(request):
+	#get group id
+  with grpc.insecure_channel('localhost:50052') as channel2:
+    stub2 = groupDB_pb2_grpc.databaseStub(channel2)
+    groupID = stub2.getGroupId(groupDB_pb2.getGroupRequest(groupName = request.POST.get('groupname1'), userId = request.user.id)).groupId
+
+  with grpc.insecure_channel('localhost:50051') as channel:
+  	stub = groups_pb2_grpc.Groups_ManagerStub(channel)
+  	print(stub.AddMember(groups_pb2.AddMemberRequest(group_id=groupID, user_id=request.POST.get('username1'))).result) # print to make sure it works
   return render(request, 'micro/settings.html')

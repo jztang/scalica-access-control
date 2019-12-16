@@ -81,6 +81,18 @@
 
   <h3>Add user to a group</h3>
   <p>What group do you want a member to?</p>
+
+  <form action="/micro/addToGroup/" method="post">
+    {% csrf_token %}
+    <input type="text" id=groupname1 name=groupname1>
+
+    <p>Who do you want to add to that group, enter the user name?</p>
+    <input type="text" id=username1 name=username1>
+    <input type="submit" value="Add" id=submit>
+
+
+    
+  </form>
   
 
   
