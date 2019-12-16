@@ -19,5 +19,6 @@ urlpatterns = [
     #url(r'^userslist/$', views.getAllUsers, name='getUsers'),
     url(r'^deleteGroup/$', views.deleteGroup, name='delete'),
     url(r'^deleteMember/$', views.deleteMember, name='deleteMember'),
+    url(r'^userid/$', views.getUserId, name='deleteMember'),
     url('^', include('django.contrib.auth.urls'))
 ]

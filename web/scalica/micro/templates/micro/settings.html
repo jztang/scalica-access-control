@@ -46,6 +46,18 @@
 
   <h1 style="text-align: center; padding-bottom: 25px;">Settings Page</h1>
 
+  <h3>What is my user id? </h3>
+  <form action="/micro/userid/" method="post">
+    {% csrf_token %}
+    <select name="userid" id="userid">
+        {% for entry in userids %}
+            <option value="{{ entry.id }}">{{ entry }}</option>
+        {% endfor %}
+        </select>
+    <input type="submit" value="What is it?" id=submit>
+  </form>
+
+
 
   <h3>Add a group</h3>
   <p>Type in the name of the group you want to create</p>

@@ -283,3 +283,9 @@ def addMemberToGroup(request):
   	stub = groups_pb2_grpc.Groups_ManagerStub(channel)
   	print(stub.AddMember(groups_pb2.AddMemberRequest(group_id=str(groupID), user_id=str(request.POST.get('username1')))).result) # print to make sure it works
   return render(request, 'micro/settings.html')
+
+@login_required
+def getUserId(request, request2):
+  userids = request.user.id
+  return render(request, 'micro/settings.html',{'userids': userids})
+  
